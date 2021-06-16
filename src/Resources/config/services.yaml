@@ -1,0 +1,78 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  # Конфигуратор БД.
+  cycle_orm.configurator:
+    class: Prokl\WpCycleOrmBundle\Services\Bootstrap\DatabaseConfigurator
+    arguments: ['%cycle_orm.config%']
+
+  # Конфигурация.
+  cycle_orm.configuration:
+    class: Spiral\Database\Config\DatabaseConfig
+    factory: ['@cycle_orm.configurator', 'getDatabaseConfig']
+
+  # DBAL.
+  cycle_orm.dbal:
+    class: Spiral\Database\DatabaseManager
+    arguments: ['@cycle_orm.configuration']
+
+  cycle_orm.orm_factory:
+    public: false
+    class: Cycle\ORM\Factory
+    arguments: ['@cycle_orm.dbal']
+
+  # Инстанц несконфигурированной ORM.
+  cycle_orm.orm_empty:
+    public: false
+    class: Cycle\ORM\ORM
+    arguments: ['@cycle_orm.orm_factory']
+
+  cycle_orm.schemas_collector:
+    class: Prokl\WpCycleOrmBundle\Services\CycleTablesCollector
+    arguments: ['@cycle_orm.orm_empty', !tagged_iterator cycle_orm.table.schema]
+
+  # Инстанц сконфигурированной ORM.
+  cycle_orm.orm:
+    class: Cycle\ORM\ORM
+    factory: ['@cycle_orm.schemas_collector', 'getOrm']
+
+  cycle_orm.class_locator:
+    class: Prokl\WpCycleOrmBundle\Services\ClassLocator
+    arguments: ['%cycle_orm.entities_path%']
+
+  ###############
+  # Схемы таблиц
+  ###############
+
+  Prokl\WpCycleOrmBundle\Schemas\WpPosts:
+    public: false
+    class: Prokl\WpCycleOrmBundle\Schemas\WpPosts
+    tags:
+      - { name: cycle_orm.table.schema }
+
+  Prokl\WpCycleOrmBundle\Schemas\PostMetaSchema:
+    public: false
+    class: Prokl\WpCycleOrmBundle\Schemas\PostMetaSchema
+    tags:
+      - { name: cycle_orm.table.schema }
+
+  Prokl\WpCycleOrmBundle\Schemas\TaxonomySchema:
+    public: false
+    class: Prokl\WpCycleOrmBundle\Schemas\TaxonomySchema
+    tags:
+      - { name: cycle_orm.table.schema }
+
+  Prokl\WpCycleOrmBundle\Schemas\TermSchema:
+    public: false
+    class: Prokl\WpCycleOrmBundle\Schemas\TermSchema
+    tags:
+      - { name: cycle_orm.table.schema }
+
+  Prokl\WpCycleOrmBundle\Schemas\UserSchema:
+    public: false
+    class: Prokl\WpCycleOrmBundle\Schemas\UserSchema
+    tags:
+      - { name: cycle_orm.table.schema }
