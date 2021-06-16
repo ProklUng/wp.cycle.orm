@@ -1,5 +1,7 @@
 # Экспериментальная интеграция Spiral Cycle ORM с Wordpress
 
+Бандл для кастомных вариантов Wordpress + Symfony.
+
 ### Установка
 
 composer.json:
@@ -39,4 +41,11 @@ wp_cycle_orm:
         db_name: '%env(DB_NAME)%'
         username: '%env(DB_USER)%'
         password: '%env(DB_PASSWORD)%'
+```
+
+### Использование
+
+```php
+$orm = container()->get('cycle_orm.orm');
+$data = $orm->getRepository(Post::class)->findByPK(1189);
 ```
