@@ -17,7 +17,7 @@ composer.json:
 
 ```bash
 
-composer require proklung/proklung/wp-cycle-orm
+composer require proklung/wp-cycle-orm
 
 ```
 
