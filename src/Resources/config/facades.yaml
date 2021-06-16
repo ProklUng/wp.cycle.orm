@@ -4,4 +4,4 @@ services:
     autoconfigure: true
     public: true
 
-  Prokl\WpCycleOrmBundle\Facades\CycleORM: ~
+  Prokl\WpCycleOrmBundle\Facades\CycleOrm: ~
