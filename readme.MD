@@ -10,7 +10,7 @@ composer.json:
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/proklung/proklung/wp.cycle.orm"
+            "url": "https://github.com/proklung/wp.cycle.orm"
         }
     ]
 ```
