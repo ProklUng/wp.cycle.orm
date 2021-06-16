@@ -41,6 +41,12 @@ services:
     class: Cycle\ORM\ORM
     factory: ['@cycle_orm.schemas_collector', 'getOrm']
 
+  cycle_orm.entity_manager:
+    class: Prokl\WpCycleOrmBundle\Entity\Manager
+    arguments: ['@cycle_orm.orm']
+
+  Prokl\WpCycleOrmBundle\Contracts\EntityManagerInterface: '@cycle_orm.entity_manager'
+
   cycle_orm.class_locator:
     class: Prokl\WpCycleOrmBundle\Services\ClassLocator
     arguments: ['%cycle_orm.entities_path%']

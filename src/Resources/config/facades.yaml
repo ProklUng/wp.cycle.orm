@@ -5,3 +5,4 @@ services:
     public: true
 
   Prokl\WpCycleOrmBundle\Facades\CycleOrm: ~
+  Prokl\WpCycleOrmBundle\Facades\EntityManagerFacade: ~
