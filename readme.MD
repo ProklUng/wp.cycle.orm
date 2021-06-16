@@ -27,7 +27,7 @@ composer require proklung/proklung/wp-cycle-orm
 wp_cycle_orm:
   default_connection: mysql # Соединение по умолчанию
   # Путь к папке с сущностями
-  entities_path: '%kernel.project_dir%/utils/Bundles/WpCycleOrmBundle/Entities'
+  entities_path: '%kernel.project_dir%/src/Entities'
   databases:
     default:
       connection: mysql
@@ -49,3 +49,7 @@ wp_cycle_orm:
 $orm = container()->get('cycle_orm.orm');
 $data = $orm->getRepository(Post::class)->findByPK(1189);
 ```
+
+#### Сервисы
+
+- `cycle_orm.orm` - сконфигурированный экземпляр `Cycle\ORM\ORM` (основное класс для работы с Cycle ORM).

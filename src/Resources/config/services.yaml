@@ -19,6 +19,7 @@ services:
     class: Spiral\Database\DatabaseManager
     arguments: ['@cycle_orm.configuration']
 
+  # ORM factory.
   cycle_orm.orm_factory:
     public: false
     class: Cycle\ORM\Factory
@@ -31,6 +32,7 @@ services:
     arguments: ['@cycle_orm.orm_factory']
 
   cycle_orm.schemas_collector:
+    public: false
     class: Prokl\WpCycleOrmBundle\Services\CycleTablesCollector
     arguments: ['@cycle_orm.orm_empty', !tagged_iterator cycle_orm.table.schema]
 
