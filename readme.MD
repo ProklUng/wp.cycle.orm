@@ -53,3 +53,4 @@ $data = $orm->getRepository(Post::class)->findByPK(1189);
 #### Сервисы
 
 - `cycle_orm.orm` - сконфигурированный экземпляр `Cycle\ORM\ORM` (основное класс для работы с Cycle ORM).
+- Фасад `Prokl\WpCycleOrmBundle\Facades\CycleORM` (при установке [бандла](https://github.com/ProklUng/facade.bundle)).

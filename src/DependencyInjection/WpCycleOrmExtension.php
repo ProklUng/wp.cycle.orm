@@ -31,6 +31,11 @@ class WpCycleOrmExtension extends Extension
 
         $loader->load('services.yaml');
 
+        // Фасады подтягиваются только, если установлен соответствующий бандл.
+        if (class_exists('Prokl\FacadeBundle\Services\AbstractFacade')) {
+            $loader->load('facades.yaml');
+        }
+
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
