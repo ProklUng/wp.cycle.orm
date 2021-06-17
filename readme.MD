@@ -57,7 +57,8 @@ $data = $orm->getRepository(Post::class)->findByPK(1189);
 - `cycle_orm.entity_manager` - обертка с операциями над сущностями.
 - Фасад `Prokl\WpCycleOrmBundle\Facades\EntityManagerFacade`
 
-#### Команды
+#### Консольные команды
 
 - `cycle_entity:list` - все найденные сущности ORM.
 - `cycle_entity:table --database default {table-name}` - схема определенной таблицы.
+- `cycle_entity:list_db` - Информация по определенным БД. Аргумент - название БД, по умолчанию - `default`.
