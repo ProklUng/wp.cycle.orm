@@ -60,3 +60,4 @@ $data = $orm->getRepository(Post::class)->findByPK(1189);
 #### Команды
 
 - `cycle_entity:list` - все найденные сущности ORM.
+- `cycle_entity:table --database default {table-name}` - схема определенной таблицы.

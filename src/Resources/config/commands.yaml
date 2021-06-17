@@ -8,3 +8,8 @@ services:
     arguments: ['@cycle_orm.orm']
     tags:
       - { name: console.command }
+
+  Prokl\WpCycleOrmBundle\Commands\Table:
+    arguments: ['@cycle_orm.dbal']
+    tags:
+      - { name: console.command }
