@@ -56,3 +56,7 @@ $data = $orm->getRepository(Post::class)->findByPK(1189);
 - Фасад `Prokl\WpCycleOrmBundle\Facades\CycleORM` (при установке [бандла](https://github.com/ProklUng/facade.bundle)).
 - `cycle_orm.entity_manager` - обертка с операциями над сущностями.
 - Фасад `Prokl\WpCycleOrmBundle\Facades\EntityManagerFacade`
+
+#### Команды
+
+- `cycle_entity:list` - все найденные сущности ORM.
