@@ -1,0 +1,19 @@
+<h2>Query Metrics</h2>
+<div class="metrics">
+    <div class="metric">
+        <span class="value">{{ countReadQuery }}</span>
+        <span class="label">Count read query</span>
+    </div>
+    <div class="metric">
+        <span class="value">{{ countWriteQuery }}</span>
+        <span class="label">Count write query</span>
+    </div>
+    <div class="metric">
+        <span class="value">{{ totalCountQuery }}</span>
+        <span class="label">Total count query</span>
+    </div>
+    <div class="metric">
+        <span class="value">{{ '%0.2f'|format(totalTimeRunQuery * 1000) }} ms</span>
+        <span class="label">Query time</span>
+    </div>
+</div>

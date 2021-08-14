@@ -27,6 +27,7 @@ final class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('default_connection')->end()
                 ->scalarNode('entities_path')->end()
+                ->scalarNode('log_queries')->defaultFalse()->end()
                 ->arrayNode('databases')
                         ->useAttributeAsKey('name')
                         ->prototype('array')

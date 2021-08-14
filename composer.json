@@ -33,11 +33,11 @@
   ],
   "require": {
     "php": ">=7.3 | ~8",
-    "symfony/dependency-injection": "^4.0 || ^5.0",
-    "symfony/http-kernel": "^4.0 || ^5.0",
-    "symfony/config": "~4|~5",
-    "symfony/framework-bundle": "^4.0 || ^5.0",
-    "symfony/console": "^4.0 || ^5.0",
+    "symfony/dependency-injection": "^4.4 || ^5.0",
+    "symfony/http-kernel": "^4.4 || ^5.0",
+    "symfony/config": "^4.4 || ^5.0",
+    "symfony/framework-bundle": "^4.4 || ^5.0",
+    "symfony/console": "^4.4 || ^5.0",
     "proklung/base-exception": "^1.0",
     "cycle/orm": "^1.4",
     "cycle/annotated": "^2.3",
@@ -46,6 +46,6 @@
     "spiral/tokenizer": "^2.7"
   },
   "require-dev": {
-    "proklung/wordpress-test-build": "^1.1"
+    "proklung/wordpress-test-build": "^1.2"
   }
 }

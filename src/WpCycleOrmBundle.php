@@ -2,7 +2,9 @@
 
 namespace Prokl\WpCycleOrmBundle;
 
+use Prokl\WpCycleOrmBundle\DependencyInjection\CompilerPass\QueryLoggerCompilerPass;
 use Prokl\WpCycleOrmBundle\DependencyInjection\WpCycleOrmExtension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -23,5 +25,13 @@ class WpCycleOrmBundle extends Bundle
         }
 
         return $this->extension;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function build(ContainerBuilder $container): void
+    {
+        $container->addCompilerPass(new QueryLoggerCompilerPass());
     }
 }

@@ -28,6 +28,8 @@ wp_cycle_orm:
   default_connection: mysql # Соединение по умолчанию
   # Путь к папке с сущностями
   entities_path: '%kernel.project_dir%/src/Entities'
+  # Логировать запросы DBAL. Если true, то логирование все равно работает только для среды dev.
+  log_queries: false
   databases:
     default:
       connection: mysql

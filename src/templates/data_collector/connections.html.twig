@@ -1,0 +1,23 @@
+<h2>Connections</h2>
+{% if hasConnections %}
+    <table>
+        <thead>
+            <tr>
+                <th scope="col" class="key">Name</th>
+                <th scope="col">Driver</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for connection in connections %}
+            <tr>
+                <th scope="row">{{ connection.name }}</th>
+                <td>{{ connection.driver }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="empty">
+        <p>There are no configured database connections.</p>
+    </div>
+{% endif %}

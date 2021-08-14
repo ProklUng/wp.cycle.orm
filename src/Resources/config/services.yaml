@@ -19,6 +19,9 @@ services:
     class: Spiral\Database\DatabaseManager
     arguments: ['@cycle_orm.configuration']
 
+  Spiral\Database\DatabaseProviderInterface: '@cycle_orm.dbal'
+  Spiral\Database\DatabaseManager: '@cycle_orm.dbal'
+
   # ORM factory.
   cycle_orm.orm_factory:
     public: false

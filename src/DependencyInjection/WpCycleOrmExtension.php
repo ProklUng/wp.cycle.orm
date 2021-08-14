@@ -5,6 +5,7 @@ namespace Prokl\WpCycleOrmBundle\DependencyInjection;
 use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -29,8 +30,14 @@ class WpCycleOrmExtension extends Extension
             new FileLocator(__DIR__.self::DIR_CONFIG)
         );
 
+        $loaderPhp = new PhpFileLoader(
+            $container,
+            new FileLocator(__DIR__.self::DIR_CONFIG)
+        );
+
         $loader->load('services.yaml');
         $loader->load('commands.yaml');
+        $loaderPhp->load('logger.php');
 
         // Фасады подтягиваются только, если установлен соответствующий бандл.
         if (class_exists('Prokl\FacadeBundle\Services\AbstractFacade')) {
@@ -51,6 +58,7 @@ class WpCycleOrmExtension extends Extension
         $container->setParameter('cycle_orm.default_connection', $config['default_connection']);
         $container->setParameter('cycle_orm.databases', $config['databases']);
         $container->setParameter('cycle_orm.connections', $config['connections']);
+        $container->setParameter('cycle_orm.log_queries', $config['log_queries']);
     }
 
     /**

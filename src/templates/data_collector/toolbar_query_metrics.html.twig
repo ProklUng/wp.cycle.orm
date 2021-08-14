@@ -1,0 +1,18 @@
+<div class="sf-toolbar-info-piece">
+    <b>Count read query</b>
+    <span class="sf-toolbar-status">{{ countReadQuery }}</span>
+</div>
+<div class="sf-toolbar-info-piece">
+    <b>Count write query</b>
+    <span class="sf-toolbar-status">{{ countWriteQuery }}</span>
+</div>
+<div class="sf-toolbar-info-piece">
+    <b>Total count query</b>
+    <span class="sf-toolbar-status {{ totalCountQuery > 50 ? 'sf-toolbar-status-yellow' : '' }}">
+        {{ totalCountQuery }}
+    </span>
+</div>
+<div class="sf-toolbar-info-piece">
+    <b>Query time</b>
+    <span>{{ '%0.2f'|format(totalTimeRunQuery * 1000) }} ms</span>
+</div>

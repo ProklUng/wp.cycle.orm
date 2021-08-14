@@ -1,0 +1,51 @@
+<h2>Queries</h2>
+{% if not isEmpty %}
+    <table class="queries-table">
+        <thead>
+            <tr>
+                <th class="nowrap">#</th>
+                <th scope="col">Connection</th>
+                <th scope="col">Time</th>
+                <th scope="col">Sql</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dump in dumps %}
+            {% for i,query in dump.queries %}
+                <tr>
+                    <td class="nowrap">{{ i }}</td>
+                    <td class="nowrap">{{ dump.connection }}</td>
+                    <td class="nowrap">{{ '%0.2f'|format(query.elapsed * 1000) }} ms</td>
+                    <td>
+                        {{ query.sql | spiral_prettify_sql }}
+                        <div class="text-small font-normal">
+                            <a class="sf-toggle link-inverse" data-toggle-selector="#formatted-query-{{ i }}" data-toggle-alt-content="Hide formatted query" href="#">
+                                View formatted query
+                            </a>
+                        </div>
+                        <div id="formatted-query-{{ i }}" class="sf-toggle-content sf-toggle-hidden">
+                            {{ query.sql | spiral_format_sql }}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="empty">
+        <p>No database queries were performed.</p>
+    </div>
+{% endif %}
+
+<style>
+    .queries-table pre {
+        margin: 0;
+        white-space: pre-wrap;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+    }
+</style>
